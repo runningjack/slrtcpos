@@ -1,0 +1,23 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"  xmlns:app="http://schemas.android.com/apk/res-auto" >
+
+    <item
+        android:id="@+id/action_ticketing"
+        android:icon="@drawable/receive"
+        android:title="Prints"
+        app:showAsAction="ifRoom"
+        />
+ <item
+    android:id="@+id/action_tickets"
+    android:icon="@drawable/cinema21"
+    android:title="Ticket"
+    app:showAsAction="ifRoom"
+    />
+
+
+<!-- Settings, should always be in the overflow -->
+<item android:id="@+id/action_settings"
+    android:title="@string/action_settings"
+    app:showAsAction="never"/>
+
+
+</menu>

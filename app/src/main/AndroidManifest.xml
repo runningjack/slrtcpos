@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.amedora.slrtcpos" >
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.READ_SYNC_SETTINGS"/>
+    <uses-permission android:name="android.permission.WRITE_SYNC_SETTINGS"/>
+    <uses-permission android:name="android.permission.AUTHENTICATE_ACCOUNTS"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+       
+        android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+        >
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".LogoutActivity"  />
+        <activity android:name=".LogoutActivityDriver"  />
+        <activity android:name=".RegisterDriverActivity"  />
+        <activity android:name=".RegisterDriverActivity2"  />
+        <activity android:name=".LoginDriverActivity"  />
+        <activity android:name=".LoginActivity" android:parentActivityName=".MainActivity" />
+        <activity android:name=".TripHomeActivity"  />
+        <activity android:name=".TestPrintActivity" android:parentActivityName=".TicketingHomeActivity"/>
+
+        <activity android:name=".TripDayCloseActivity"/>
+        <activity android:name=".DeviceListActivity" android:label="@string/select_device" android:theme="@android:style/Theme.Dialog"></activity>
+        <activity android:name=".GenerateTicketActivity" android:label="Print Preview"
+            android:parentActivityName=".TicketingHomeActivity">
+        </activity>
+        <activity android:name=".LoadingFeatures" android:parentActivityName=".MainActivity" />
+        <activity android:name=".TicketingHomeActivity" android:label="Bus Ticket"
+            android:parentActivityName=".MainActivity">
+        </activity>
+        <activity android:name=".RegisterActivity1" android:label="Registration Screen 1"
+            android:parentActivityName=".MainActivity">
+        </activity>
+        <activity android:name=".RegisterActivity2" android:label="Registration Screen 2"
+            android:parentActivityName=".RegisterActivity1">
+        </activity>
+        <activity android:name=".RegisterActivity3" android:label="Registration Screen 3"
+            android:parentActivityName=".RegisterActivity2">
+        </activity>
+        <activity android:name=".RegisterActivity4" android:label="Registration Screen 4"
+            android:parentActivityName=".RegisterActivity3">
+        </activity>
+
+        <activity android:name=".TicketListActivity" android:label="Ticket Data"
+            android:parentActivityName=".TicketingHomeActivity">
+        </activity>
+
+        <activity android:name=".RegisterActivityBank" android:label="Final Screen"
+            android:parentActivityName=".RegisterActivity4">
+        </activity>
+
+        <activity android:name=".AccountActivity" android:label="Balance"
+            android:parentActivityName=".TicketingHomeActivity">
+        </activity>
+        <provider
+            android:authorities=".app"
+            android:name=".app.StubProvider"
+            android:exported="false"
+            android:syncable="true"/>
+
+        <service
+            android:name=".app.AuthenticatorService">
+            <intent-filter>
+                <action android:name="android.accounts.AccountAuthenticator"/>
+            </intent-filter>
+            <meta-data
+                android:name="android.accounts.AccountAuthenticator"
+                android:resource="@xml/authenticator" />
+        </service>
+        <service
+            android:name=".app.SyncService"
+            android:exported="true"
+            android:process=":sync">
+            <intent-filter>
+                <action android:name="android.content.SyncAdapter"/>
+            </intent-filter>
+            <meta-data android:name="android.content.SyncAdapter"
+                android:resource="@xml/syncadapter" />
+        </service>
+    </application>
+
+</manifest>
